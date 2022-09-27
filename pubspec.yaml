@@ -1,0 +1,149 @@
+name: learningarabic
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.6 <3.0.0" 
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_svg: ^1.1.4
+  assets_audio_player: ^3.0.5
+  fluttertoast: ^8.0.9
+  flutter_rating_bar: ^4.0.1
+  wakelock: ^0.6.2
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+  
+  assets: 
+    - assets/1-menu-option.svg
+    - assets/2-play.svg
+    - assets/3-exit.svg
+    - assets/4-back.svg
+    - assets/5-previous.svg
+    - assets/6-next.svg
+    - assets/7-frame.svg
+    - assets/background-menu-lanscape.svg
+    - assets/background-menu-potrait.svg
+    - assets/background-nama-keluarga.svg
+    - assets/nama-keluarga.svg
+    - assets/title-pilih-materi.svg
+    - assets/title-benda-dalam-kelas.svg
+    - assets/title-angka-bahasa-arab.svg
+    - assets/title-menu.svg
+    - assets/title-sholat.svg
+    - assets/01-benda-dalam-kelas.svg
+    - assets/02-angka.svg
+    - assets/03-sholat.svg
+    - assets/04-nama-keluarga.svg
+    - assets/01-benda-dalam-kelas/1-Penggaris.svg
+    - assets/01-benda-dalam-kelas/2-Penghapus-spidol.svg
+    - assets/01-benda-dalam-kelas/3-Tas.svg
+    - assets/01-benda-dalam-kelas/4-Kursi.svg
+    - assets/01-benda-dalam-kelas/5-Globe.svg
+    - assets/01-benda-dalam-kelas/6-Peta.svg
+    - assets/01-benda-dalam-kelas/7-Meja.svg
+    - assets/01-benda-dalam-kelas/8-Kelip.svg
+    - assets/01-benda-dalam-kelas/9-Pintu.svg
+    - assets/01-benda-dalam-kelas/10-Pensil.svg
+    - assets/01-benda-dalam-kelas/11-Polpen.svg
+    - assets/01-benda-dalam-kelas/12-Jam-Dinding.svg
+    - assets/01-benda-dalam-kelas/13-Tempat-Sampah.svg
+    - assets/01-benda-dalam-kelas/14-Guru.svg
+    - assets/01-benda-dalam-kelas/15-Papan-Tulis.svg
+    - assets/01-benda-dalam-kelas/16-Sapu.svg
+    - assets/01-benda-dalam-kelas/17-Siswa.svg
+    - assets/02-nama-keluarga/1-kakek.svg
+    - assets/02-nama-keluarga/2-nenek.svg
+    - assets/02-nama-keluarga/3-ayah.svg
+    - assets/02-nama-keluarga/4-Ibu.svg
+    - assets/02-nama-keluarga/5-Paman.svg
+    - assets/02-nama-keluarga/6-Tante.svg
+    - assets/02-nama-keluarga/7-Anak.svg
+    - assets/02-nama-keluarga/8-Cucu.svg
+    - assets/03-gerakan-sholat/1-niat.svg
+    - assets/03-gerakan-sholat/2-takbir.svg
+    - assets/03-gerakan-sholat/3-baca-surah.svg
+    - assets/03-gerakan-sholat/4-rukuk.svg
+    - assets/03-gerakan-sholat/5-bangkit-dari-rukuk.svg
+    - assets/03-gerakan-sholat/6-duduk-diantara-dua-sujud.svg
+    - assets/03-gerakan-sholat/7-Sujud.svg
+    - assets/03-gerakan-sholat/8-Salam.svg
+    - assets/03-gerakan-sholat/9-Tahiyat.svg
+    - assets/04-angka-res-300/1.svg
+    - assets/04-angka-res-300/2.svg
+    - assets/04-angka-res-300/3.svg
+    - assets/04-angka-res-300/4.svg
+    - assets/04-angka-res-300/5.svg
+    - assets/04-angka-res-300/6.svg
+    - assets/04-angka-res-300/7.svg
+    - assets/04-angka-res-300/8.svg
+    - assets/04-angka-res-300/9.svg
+    - assets/04-angka-res-300/10.svg
+    - assets/04-angka-res-300/11.svg
+    - assets/04-angka-res-300/12.svg
+    - assets/04-angka-res-300/13.svg
+    - assets/04-angka-res-300/14.svg
+    - assets/04-angka-res-300/15.svg
+    - assets/04-angka-res-300/16.svg
+    - assets/04-angka-res-300/17.svg
+    - assets/04-angka-res-300/18.svg
+    - assets/04-angka-res-300/19.svg
+    - assets/04-angka-res-300/20.svg
+    - assets/05-page-kuis/1-angka-dalam-bahasa-arab.svg
+    - assets/05-page-kuis/2-sholat.svg
+    - assets/05-page-kuis/3-nama-keluarga.svg
+    - assets/05-page-kuis/4-title-kuis.svg
+    - assets/audio/1/penggaris.mp4
+    - assets/audio/1/penghapus.mp4
+    - assets/audio/1/tas.mp4
+    - assets/audio/1/kursi.mp4
+    - assets/audio/1/meja.mp4
+    - assets/audio/1/pintu.mp4
+    - assets/audio/1/pensil.mp4
+    - assets/audio/1/pulpen.mp4
+    - assets/audio/1/papan-tulis.mp4
+    - assets/audio/1/sapu.mp4
+    - assets/audio/2/1.mp4
+    - assets/audio/2/2.mp4
+    - assets/audio/2/3.mp4
+    - assets/audio/2/4.mp4
+    - assets/audio/2/5.mp4
+    - assets/audio/2/6.mp4
+    - assets/audio/2/7.mp4
+    - assets/audio/2/8.mp4
+    - assets/audio/2/9.mp4
+    - assets/audio/3/niat.mp4
+    - assets/audio/3/takbir.mp4
+    - assets/audio/3/baca-surah.mp4
+    - assets/audio/3/rukuk.mp4
+    - assets/audio/3/bangkit-dari-rukuk.mp4
+    - assets/audio/3/duduk-diantara-dua-sujud.mp4
+    - assets/audio/3/sujud.mp4
+    - assets/audio/3/salam.mp4
+    - assets/audio/3/tahiyat.mp4
+    - assets/audio/4/kakek.mp4
+    - assets/audio/4/nenek.mp4
+    - assets/audio/4/ayah.mp4
+    - assets/audio/4/ibu.mp4
+    - assets/audio/4/paman.mp4
+    - assets/audio/4/tante.mp4
+    - assets/audio/4/anak.mp4
+    - assets/audio/4/cucu.mp4
+    - assets/icon/timer.png
+    - assets/icon/score.png
+    - assets/image/ikhwan.png
+    - assets/image/akhwat.png
