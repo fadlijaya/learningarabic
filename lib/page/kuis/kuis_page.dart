@@ -7,6 +7,7 @@ import 'package:learningarabic/page/materi/sholat_page.dart';
 
 import '../../utils/constants.dart';
 import '../materi/nama_keluarga_page.dart';
+import 'tebak_angka_page.dart';
 import 'tebak_benda_page.dart';
 
 class KuisPage extends StatefulWidget {
@@ -61,11 +62,19 @@ class _KuisPageState extends State<KuisPage> {
     return Positioned.fill(
       child: Container(
         alignment: Alignment.center,
-        margin: const EdgeInsets.only(top: 80), 
+        margin: const EdgeInsets.only(top: 80),
         child: Column(
           children: [
-            Text("BERMAIN", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-            const SizedBox(height: 24,),
+            Text(
+              "PILIH BERMAIN",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 24,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -74,17 +83,39 @@ class _KuisPageState extends State<KuisPage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => TebakBendaPage())),
-                  child: SvgPicture.asset(
-                    FRAME,
-                    width: 140,
+                  child: Stack(
+                    children: [
+                      SvgPicture.asset(
+                        FRAME,
+                        width: 140,
+                      ),
+                      Positioned.fill(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text("Tebak Benda", style: TextStyle(fontSize: 20),)))
+                    ],
                   ),
                 ),
                 SizedBox(
                   width: 16,
                 ),
-                SvgPicture.asset(
-                  FRAME,
-                  width: 140,
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TebakAngkaPage())),
+                  child: Stack(
+                    children: [
+                      SvgPicture.asset(
+                        FRAME,
+                        width: 140,
+                      ),
+                      Positioned.fill(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text("Tebak Angka", style: TextStyle(fontSize: 20),)))
+                    ],
+                  ),
                 ),
                 SizedBox(
                   width: 16,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learningarabic/models/m_tebak_benda.dart';
+import 'package:learningarabic/page/kuis/kuis_page.dart';
+import 'package:learningarabic/page/kuis/tebak_angka_page.dart';
 import 'package:learningarabic/page/kuis/tebak_benda_page.dart';
 import 'package:learningarabic/page/menu_page.dart';
 
@@ -14,14 +15,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Learning Arabic',
+      title: 'Belajar Bahasa Arab',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
       routes: {
-        '/menu': (_) => MenuPage(),
-        '/tebakBendaPage': (_) => TebakBendaPage() 
+        '/menu': (_) => const MenuPage(),
+        '/kuis': (_) => const KuisPage(),
+        '/tebakBenda': (_) => const TebakBendaPage(),
+        '/tebakAngka': (_) => const TebakAngkaPage()
       },
       home: const MenuPage(),
     );

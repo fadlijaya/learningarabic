@@ -95,15 +95,6 @@ class _AngkaBahasaArabPageState extends State<AngkaBahasaArabPage> {
           assetImage[index], assetAudio[index]));
 
   @override
-  void initState() {
-    super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
-  }
-
-  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 

@@ -99,10 +99,6 @@ class _BendaDalamKelasPageState extends State<BendaDalamKelasPage> {
   @override
   void initState() {
     super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
   }
 
   @override

@@ -43,8 +43,7 @@ class _MenuPageState extends State<MenuPage> {
         child: Stack(
           children: [
             buildBackground(),
-            buildImageRight(),
-            buildImageLeft(),
+            buildImage(),
             buildIconExit(),
             buildTitleMenu()
           ],
@@ -60,23 +59,22 @@ class _MenuPageState extends State<MenuPage> {
     );
   }
 
-  Widget buildImageRight() {
+  Widget buildImage() {
     return Positioned.fill(
         child: Align(
-            alignment: Alignment.bottomRight,
-            child: Image.asset(
-              "assets/image/ikhwan.png",
-              width: 240,
-            )));
-  }
-
-  Widget buildImageLeft() {
-    return Positioned.fill(
-        child: Align(
-            alignment: Alignment.bottomLeft,
-            child: Image.asset(
-              "assets/image/akhwat.png",
-              width: 240,
+            alignment: Alignment.bottomCenter,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Image.asset(
+                  "assets/image/akhwat.png",
+                  width: 160,
+                ),
+                Image.asset(
+                  "assets/image/ikhwan.png",
+                  width: 160,
+                ),
+              ],
             )));
   }
 

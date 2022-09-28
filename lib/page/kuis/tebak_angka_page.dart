@@ -2,24 +2,23 @@ import 'dart:async';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:learningarabic/models/m_tebak_angka.dart';
 
-import '../../models/m_tebak_benda.dart';
 import '../../utils/constants.dart';
 
-QuizTebakBenda quizTebakBenda = QuizTebakBenda();
+QuizTebakAngka quizTebakAngka = QuizTebakAngka();
 
-class TebakBendaPage extends StatefulWidget {
-  const TebakBendaPage({Key? key}) : super(key: key);
+class TebakAngkaPage extends StatefulWidget {
+  const TebakAngkaPage({Key? key}) : super(key: key);
 
   @override
-  State<TebakBendaPage> createState() => _TebakBendaPageState();
+  State<TebakAngkaPage> createState() => _TebakAngkaPageState();
 }
 
-class _TebakBendaPageState extends State<TebakBendaPage> {
+class _TebakAngkaPageState extends State<TebakAngkaPage> {
   PageController pageController = PageController();
   Duration duration = const Duration(milliseconds: 500);
   Curve curve = Curves.ease;
@@ -31,14 +30,14 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
   double rating = 0;
 
   checkAnswer(bool userPickAnswer) {
-    bool correctAnswer = quizTebakBenda.getAnswer();
+    bool correctAnswer = quizTebakAngka.getAnswer();
     setState(() {
-      if (quizTebakBenda.isFinished() == true) {
+      if (quizTebakAngka.isFinished() == true) {
         Future.delayed(const Duration(seconds: 3), () {
           endQuiz();
         });
         stopTimer();
-        quizTebakBenda.reset();
+        quizTebakAngka.reset();
         check = [];
       } else {
         if (userPickAnswer == correctAnswer) {
@@ -63,7 +62,7 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
           rating = rating - 0.2;
         }
 
-        quizTebakBenda.nextQuestion();
+        quizTebakAngka.nextQuestion();
       }
     });
   }
@@ -85,7 +84,7 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
                     allowHalfRating: true,
                     itemCount: 5,
                     itemBuilder: (context, i) {
-                      return Icon(
+                      return const Icon(
                         Icons.star,
                         color: Colors.orange,
                       );
@@ -99,26 +98,26 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
                 content: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Total Skor"),
-                    SizedBox(
+                    const Text("Total Skor"),
+                    const SizedBox(
                       height: 12,
                     ),
                     Text(
                       "$skor",
-                      style: TextStyle(fontSize: 30),
+                      style: const TextStyle(fontSize: 30),
                     ),
                   ],
                 ),
                 actions: [
                   TextButton.icon(
                       onPressed: () => Navigator.pushNamed(context, '/menu'),
-                      icon: Icon(Icons.home),
-                      label: Text("Menu")),
+                      icon: const Icon(Icons.home),
+                      label: const Text("Menu")),
                   TextButton.icon(
                       onPressed: () =>
-                          Navigator.pushNamed(context, '/tebakBenda'),
-                      icon: Icon(Icons.loop),
-                      label: Text("Ulangi"))
+                          Navigator.pushNamed(context, '/tebakAngka'),
+                      icon: const Icon(Icons.loop),
+                      label: const Text("Ulangi"))
                 ],
               ),
             ],
@@ -150,12 +149,6 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
     if (mounted) {
       startTimer();
     }
-  }
-
-  @override
-  void dispose() {
-    timer.cancel();
-    super.dispose();
   }
 
   @override
@@ -206,7 +199,7 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
             padding: const EdgeInsets.only(left: 24, right: 8),
             child: Text(
               '$maxSeconds',
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
           )
         ],
@@ -235,7 +228,7 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
             padding: const EdgeInsets.only(left: 24, right: 8),
             child: Text(
               '$skor',
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
           )
         ],
@@ -248,7 +241,12 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          children: [buildIconBack(), Spacer(), buildTimer(), buildSkor()],
+          children: [
+            buildIconBack(),
+            const Spacer(),
+            buildTimer(),
+            buildSkor()
+          ],
         ),
         Expanded(
             child: ListView(
@@ -256,14 +254,14 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
             Padding(
               padding: const EdgeInsets.only(bottom: 16),
               child: SvgPicture.asset(
-                quizTebakBenda.getImage(),
+                quizTebakAngka.getImage(),
                 width: 140,
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                checkingAnswer(quizTebakBenda.getQuestion(), true),
+                checkingAnswer(quizTebakAngka.getQuestion(), true),
                 checkingAnswer('حقيبة', false),
                 checkingAnswer('حقيبة', false),
               ],
@@ -286,7 +284,7 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
           onPressed: () => checkAnswer(trueOrFalse),
           child: Text(
             correctOrWrong,
-            style: TextStyle(fontSize: 30, color: Colors.black),
+            style: const TextStyle(fontSize: 30, color: Colors.black),
           )),
     );
   }

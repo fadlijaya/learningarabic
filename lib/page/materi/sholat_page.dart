@@ -81,15 +81,6 @@ class _SholatPageState extends State<SholatPage> {
           arabicName[index], name[index], assetImage[index], assetAudio[index]));
 
   @override
-  void initState() {
-    super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
-  }
-
-  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
