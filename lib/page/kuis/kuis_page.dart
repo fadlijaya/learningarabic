@@ -66,7 +66,7 @@ class _KuisPageState extends State<KuisPage> {
         child: Column(
           children: [
             Text(
-              "PILIH BERMAIN",
+              TITLE_PILIH_KUIS,
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -86,13 +86,9 @@ class _KuisPageState extends State<KuisPage> {
                   child: Stack(
                     children: [
                       SvgPicture.asset(
-                        FRAME,
+                        TEBAK_BENDA,
                         width: 140,
                       ),
-                      Positioned.fill(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text("Tebak Benda", style: TextStyle(fontSize: 20),)))
                     ],
                   ),
                 ),
@@ -107,22 +103,11 @@ class _KuisPageState extends State<KuisPage> {
                   child: Stack(
                     children: [
                       SvgPicture.asset(
-                        FRAME,
+                        TEBAK_ANGKA,
                         width: 140,
                       ),
-                      Positioned.fill(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text("Tebak Angka", style: TextStyle(fontSize: 20),)))
                     ],
                   ),
-                ),
-                SizedBox(
-                  width: 16,
-                ),
-                SvgPicture.asset(
-                  FRAME,
-                  width: 140,
                 ),
               ],
             )

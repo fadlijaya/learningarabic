@@ -45,6 +45,9 @@ flutter:
     - assets/title-angka-bahasa-arab.svg
     - assets/title-menu.svg
     - assets/title-sholat.svg
+    - assets/title-pilih-kuis.svg
+    - assets/tebak-angka.svg
+    - assets/tebak-benda.svg
     - assets/01-benda-dalam-kelas.svg
     - assets/02-angka.svg
     - assets/03-sholat.svg
@@ -107,6 +110,12 @@ flutter:
     - assets/05-page-kuis/2-sholat.svg
     - assets/05-page-kuis/3-nama-keluarga.svg
     - assets/05-page-kuis/4-title-kuis.svg
+    - assets/05-page-kuis/button-menu.svg
+    - assets/05-page-kuis/button-ulangi.svg
+    - assets/05-page-kuis/benar.svg
+    - assets/05-page-kuis/timer.svg
+    - assets/05-page-kuis/frame-kuis.svg
+    - assets/05-page-kuis/score.svg
     - assets/audio/1/penggaris.mp4
     - assets/audio/1/penghapus.mp4
     - assets/audio/1/tas.mp4

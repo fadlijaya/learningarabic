@@ -11,8 +11,18 @@ const String FRAME1 = "assets/01-benda-dalam-kelas.svg";
 const String FRAME2 = "assets/02-angka.svg";
 const String FRAME3 = "assets/03-sholat.svg";
 const String FRAME4 = "assets/04-nama-keluarga.svg";
+const String TEBAK_ANGKA = "assets/tebak-angka.svg";
+const String TEBAK_BENDA = "assets/tebak-benda.svg";
 
 const String TITLE_PILIH_MATERI = "assets/title-pilih-materi.svg";
+const String TITLE_PILIH_KUIS = "assets/title-pilih-kuis.svg";
+
+const String BUTTON_MENU = "assets/05-page-kuis/button-menu.svg";
+const String BUTTON_ULANGI = "assets/05-page-kuis/button-ulangi.svg";
+const String BENAR = "assets/05-page-kuis/benar.svg";
+const String TIMER = "assets/05-page-kuis/timer.svg";
+const String FRAME_KUIS = "assets/05-page-kuis/frame-kuis.svg";
+const String SCORE = "assets/05-page-kuis/score.svg";
 
 const String TITLE_BENDA_DALAM_KELAS = "assets/title-benda-dalam-kelas.svg";
 const String PENGGARIS = "assets/01-benda-dalam-kelas/1-Penggaris.svg";
@@ -43,8 +53,10 @@ const String NIAT = "assets/03-gerakan-sholat/1-niat.svg";
 const String TAKBIR = "assets/03-gerakan-sholat/2-takbir.svg";
 const String BACA_SURAH = "assets/03-gerakan-sholat/3-baca-surah.svg";
 const String RUKUK = "assets/03-gerakan-sholat/4-rukuk.svg";
-const String BANGKIT_DARI_RUKUK = "assets/03-gerakan-sholat/5-bangkit-dari-rukuk.svg";
-const String DUDUK_DIANTARA_DUA_SUJUD = "assets/03-gerakan-sholat/6-duduk-diantara-dua-sujud.svg";
+const String BANGKIT_DARI_RUKUK =
+    "assets/03-gerakan-sholat/5-bangkit-dari-rukuk.svg";
+const String DUDUK_DIANTARA_DUA_SUJUD =
+    "assets/03-gerakan-sholat/6-duduk-diantara-dua-sujud.svg";
 const String SUJUD = "assets/03-gerakan-sholat/7-Sujud.svg";
 const String SALAM = "assets/03-gerakan-sholat/8-Salam.svg";
 const String TAHIYAT = "assets/03-gerakan-sholat/9-Tahiyat.svg";
