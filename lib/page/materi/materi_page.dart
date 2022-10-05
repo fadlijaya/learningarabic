@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,6 +17,32 @@ class MateriPage extends StatefulWidget {
 }
 
 class _MateriPageState extends State<MateriPage> {
+   AssetsAudioPlayer assetsAudioPlayer = AssetsAudioPlayer();
+   
+    audioPlay() {
+    try {
+      assetsAudioPlayer.open(Audio(BACKSOUND), loopMode: LoopMode.playlist, showNotification: false,);
+    } catch (e) {}
+  }
+
+   audioStop() {
+    try {
+      assetsAudioPlayer.open(Audio(BACKSOUND), autoStart: false, showNotification: false);
+    } catch (e) {}
+  }
+
+  @override
+  void initState() {
+    audioPlay();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    assetsAudioPlayer.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -40,10 +67,13 @@ class _MateriPageState extends State<MateriPage> {
 
   Widget buildIconBack() {
     return Positioned(
-        top: 30,
+        top: 16,
         left: 16,
         child: GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () {
+              audioStop();
+              Navigator.pushNamed(context, '/menu');
+            },
             child: SvgPicture.asset(BACK)));
   }
 
@@ -51,62 +81,74 @@ class _MateriPageState extends State<MateriPage> {
     return Positioned.fill(
       child: Container(
         alignment: Alignment.center,
-        margin: const EdgeInsets.only(top: 80), 
+        margin: const EdgeInsets.only(top: 40), 
         child: Column(
           children: [
             SvgPicture.asset(
               TITLE_PILIH_MATERI,
               width: 200,
             ),
-            const SizedBox(height: 24,),
+            const SizedBox(height: 60,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: () => Navigator.push(
+                  onTap: () {
+                    audioStop();
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => BendaDalamKelasPage())),
+                          builder: (context) => BendaDalamKelasPage()));
+                  },
                   child: SvgPicture.asset(
                     FRAME1,
-                    width: 140,
+                    width: 150,
                   ),
                 ),
                 SizedBox(
                   width: 16,
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.push(
+                  onTap: () {
+                    audioStop();
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => AngkaBahasaArabPage())),
+                          builder: (context) => AngkaBahasaArabPage()));
+                  },
                   child: SvgPicture.asset(
                     FRAME2,
-                    width: 140,
+                    width: 150,
                   ),
                 ),
                 SizedBox(
                   width: 16,
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SholatPage())),
+                  onTap: () {
+                    audioStop();
+                    Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SholatPage()));
+                  },
                   child: SvgPicture.asset(
                     FRAME3,
-                    width: 140,
+                    width: 150,
                   ),
                 ),
                 SizedBox(
                   width: 16,
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.push(
+                  onTap: () {
+                    audioStop();
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => NamaKeluargaPage())),
+                          builder: (context) => NamaKeluargaPage()));
+                  },
                   child: SvgPicture.asset(
                     FRAME4,
-                    width: 140,
+                    width: 150,
                   ),
                 ),
               ],

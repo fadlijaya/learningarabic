@@ -121,10 +121,10 @@ class _NamaKeluargaPageState extends State<NamaKeluargaPage> {
 
   Widget buildIconBack() {
     return Positioned(
-        top: 30,
+        top: 16,
         left: 16,
         child: GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () => Navigator.pushNamed(context, '/materi'),
             child: SvgPicture.asset(BACK)));
   }
 
@@ -132,7 +132,7 @@ class _NamaKeluargaPageState extends State<NamaKeluargaPage> {
     return Positioned.fill(
       child: Container(
         alignment: Alignment.center,
-        margin: const EdgeInsets.only(top: 48),
+        margin: const EdgeInsets.only(top: 40),
         child: Column(
           children: [
             SvgPicture.asset(

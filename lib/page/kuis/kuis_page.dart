@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,13 +19,30 @@ class KuisPage extends StatefulWidget {
 }
 
 class _KuisPageState extends State<KuisPage> {
+  AssetsAudioPlayer assetsAudioPlayer = AssetsAudioPlayer();
+   
+    audioPlay() {
+    try {
+      assetsAudioPlayer.open(Audio(BACKSOUND), loopMode: LoopMode.playlist, showNotification: false,);
+    } catch (e) {}
+  }
+
+   audioStop() {
+    try {
+      assetsAudioPlayer.open(Audio(BACKSOUND), autoStart: false, showNotification: false);
+    } catch (e) {}
+  }
+  
   @override
   void initState() {
     super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
+    audioPlay();
+  }
+
+  @override
+  void dispose() {
+    assetsAudioPlayer.dispose();
+    super.dispose();
   }
 
   @override
@@ -51,10 +69,10 @@ class _KuisPageState extends State<KuisPage> {
 
   Widget buildIconBack() {
     return Positioned(
-        top: 30,
+        top: 16,
         left: 16,
         child: GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () => Navigator.pushNamed(context, '/menu'),
             child: SvgPicture.asset(BACK)));
   }
 
@@ -62,49 +80,52 @@ class _KuisPageState extends State<KuisPage> {
     return Positioned.fill(
       child: Container(
         alignment: Alignment.center,
-        margin: const EdgeInsets.only(top: 80),
+        margin: const EdgeInsets.only(top: 40),
         child: Column(
           children: [
-            Text(
+            SvgPicture.asset(
               TITLE_PILIH_KUIS,
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
+              width: 200,
             ),
             const SizedBox(
-              height: 24,
+              height: 40,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: () => Navigator.push(
+                  onTap: () {
+                    audioStop();
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => TebakBendaPage())),
+                          builder: (context) => TebakBendaPage()));
+                  },
                   child: Stack(
                     children: [
                       SvgPicture.asset(
                         TEBAK_BENDA,
-                        width: 140,
+                        width: 180,
                       ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  width: 16,
+                  width: 90,
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.push(
+                  onTap: () {
+                    audioStop();
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => TebakAngkaPage())),
+                          builder: (context) => TebakAngkaPage()));
+                  },
                   child: Stack(
                     children: [
                       SvgPicture.asset(
                         TEBAK_ANGKA,
-                        width: 140,
+                        width: 180,
                       ),
                     ],
                   ),

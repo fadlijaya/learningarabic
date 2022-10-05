@@ -22,7 +22,6 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
   PageController pageController = PageController();
   Duration duration = const Duration(milliseconds: 500);
   Curve curve = Curves.ease;
-  AssetsAudioPlayer assetsAudioPlayer = AssetsAudioPlayer();
   List<Text> check = [];
   late Timer timer;
   int maxSeconds = 60;
@@ -30,20 +29,23 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
   double rating = 0;
 
   checkAnswer(bool userPickAnswer) {
-    bool correctAnswer = quizTebakAngka.getAnswer();
+    bool correctAnswer1 = quizTebakAngka.getAnswer1();
+    bool correctAnswer2 = quizTebakAngka.getAnswer2();
+    bool correctAnswer3 = quizTebakAngka.getAnswer3();
     setState(() {
       if (quizTebakAngka.isFinished() == true) {
-        Future.delayed(const Duration(seconds: 3), () {
+        Future.delayed(const Duration(seconds: 2), () {
           endQuiz();
         });
         stopTimer();
         quizTebakAngka.reset();
         check = [];
       } else {
-        if (userPickAnswer == correctAnswer) {
+        if (userPickAnswer == correctAnswer1 || correctAnswer2 || correctAnswer3) {
           check.add(const Text("Benar"));
           Fluttertoast.showToast(
               msg: 'Benar',
+              fontSize: 24.0,
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.CENTER,
               backgroundColor: Colors.green);
@@ -55,6 +57,7 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
           check.add(const Text("Salah"));
           Fluttertoast.showToast(
               msg: 'Salah',
+              fontSize: 24.0,
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.CENTER,
               backgroundColor: Colors.red);
@@ -76,49 +79,80 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               AlertDialog(
-                title: Center(
-                  child: RatingBar.builder(
-                    initialRating: rating,
-                    minRating: 0,
-                    maxRating: 5,
-                    allowHalfRating: true,
-                    itemCount: 5,
-                    itemBuilder: (context, i) {
-                      return const Icon(
-                        Icons.star,
-                        color: Colors.orange,
-                      );
-                    },
-                    onRatingUpdate: (rating) {
-                      Text("$rating");
-                    },
-                    direction: Axis.horizontal,
-                  ),
-                ),
-                content: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                backgroundColor: Colors.transparent,
+                content: Stack(
                   children: [
-                    const Text("Total Skor"),
-                    const SizedBox(
-                      height: 12,
+                    SvgPicture.asset(
+                      FRAME_KUIS,
+                      width: 260,
                     ),
-                    Text(
-                      "$skor",
-                      style: const TextStyle(fontSize: 30),
+                    Positioned(
+                      top: 20,
+                      left: 0,
+                      right: 0,
+                      child: SizedBox(
+                        child: Column(
+                          children: [
+                            RatingBar.builder(
+                              initialRating: rating,
+                              minRating: 0,
+                              maxRating: 5,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemBuilder: (context, i) {
+                                return Icon(
+                                  Icons.star,
+                                  color: Colors.orange,
+                                );
+                              },
+                              onRatingUpdate: (rating) {
+                                Text("$rating");
+                              },
+                              direction: Axis.horizontal,
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
+                    Positioned(
+                      top: 80,
+                      left: 0,
+                      right: 0,
+                      child: Column(
+                        children: [
+                          SvgPicture.asset(
+                            SCORE,
+                            width: 120,
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Text(
+                            "$skor",
+                            style: TextStyle(fontSize: 60),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () => Navigator.pushNamed(context, '/menu'),
+                              child: SvgPicture.asset(BUTTON_MENU, width: 60,)),
+                            SizedBox(width: 40,),
+                            GestureDetector(
+                              onTap: () =>  Navigator.pushNamed(context, '/tebakAngka'),
+                              child: SvgPicture.asset(BUTTON_ULANGI, width: 60,),
+                            )
+                          ],
+                        ))
                   ],
                 ),
-                actions: [
-                  TextButton.icon(
-                      onPressed: () => Navigator.pushNamed(context, '/menu'),
-                      icon: const Icon(Icons.home),
-                      label: const Text("Menu")),
-                  TextButton.icon(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/tebakAngka'),
-                      icon: const Icon(Icons.loop),
-                      label: const Text("Ulangi"))
-                ],
               ),
             ],
           );
@@ -174,7 +208,7 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
 
   Widget buildIconBack() {
     return Padding(
-      padding: const EdgeInsets.only(top: 30, left: 16),
+      padding: const EdgeInsets.only(top: 16, left: 16),
       child: GestureDetector(
           onTap: () => Navigator.pushNamed(context, '/kuis'),
           child: SvgPicture.asset(BACK)),
@@ -183,25 +217,24 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
 
   Widget buildTimer() {
     return Container(
-      margin: const EdgeInsets.only(top: 30, right: 16),
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.orange, width: 5),
-          borderRadius: BorderRadius.circular(24),
-          color: Colors.white),
-      child: Row(
+      margin: const EdgeInsets.only(top: 16, left: 60),
+      child: Stack(
         children: [
-          Image.asset(
-            "assets/icon/timer.png",
-            width: 24,
+          SvgPicture.asset(
+            TIMER,
+            width: 120,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 24, right: 8),
-            child: Text(
-              '$maxSeconds',
-              style: const TextStyle(fontSize: 20),
+          Positioned.fill(
+              child: Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 24, top: 8),
+              child: Text(
+                '$maxSeconds',
+                style: TextStyle(fontSize: 24),
+              ),
             ),
-          )
+          ))
         ],
       ),
     );
@@ -209,28 +242,24 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
 
   buildSkor() {
     return Container(
-      margin: const EdgeInsets.only(
-        top: 30,
-        right: 16,
-      ),
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.orange, width: 5),
-          borderRadius: BorderRadius.circular(24),
-          color: Colors.white),
-      child: Row(
+      margin: const EdgeInsets.only(top: 16, right: 120),
+      child: Stack(
         children: [
-          Image.asset(
-            "assets/icon/score.png",
-            width: 24,
+          SvgPicture.asset(
+            BENAR,
+            width: 120,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 24, right: 8),
-            child: Text(
-              '$skor',
-              style: const TextStyle(fontSize: 20),
+          Positioned.fill(
+              child: Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 30, top: 8),
+              child: Text(
+                '$skor',
+                style: TextStyle(fontSize: 24),
+              ),
             ),
-          )
+          ))
         ],
       ),
     );
@@ -243,8 +272,8 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
         Row(
           children: [
             buildIconBack(),
-            const Spacer(),
             buildTimer(),
+            const Spacer(),
             buildSkor()
           ],
         ),
@@ -252,7 +281,7 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
             child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 16),
+              padding: const EdgeInsets.only(bottom: 40),
               child: SvgPicture.asset(
                 quizTebakAngka.getImage(),
                 width: 140,
@@ -261,9 +290,9 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                checkingAnswer(quizTebakAngka.getQuestion(), true),
-                checkingAnswer('حقيبة', false),
-                checkingAnswer('حقيبة', false),
+                checkingAnswer(quizTebakAngka.getQuestion1(), quizTebakAngka.getAnswer1()),
+                checkingAnswer(quizTebakAngka.getQuestion2(), quizTebakAngka.getAnswer2()),
+                checkingAnswer(quizTebakAngka.getQuestion3(), quizTebakAngka.getAnswer3()),
               ],
             ),
           ],

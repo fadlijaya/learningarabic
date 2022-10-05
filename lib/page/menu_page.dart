@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,6 +15,20 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  AssetsAudioPlayer assetsAudioPlayer = AssetsAudioPlayer();
+
+  audioPlay() {
+    try {
+      assetsAudioPlayer.open(Audio(BACKSOUND), loopMode: LoopMode.playlist, showNotification: false,);
+    } catch (e) {}
+  }
+
+  audioStop() {
+    try {
+      assetsAudioPlayer.open(Audio(BACKSOUND), autoStart: false, showNotification: false);
+    } catch (e) {}
+  }
+
   Future setLandscape() async {
     // hide overlays statusbar
     // ignore: deprecated_member_use
@@ -29,7 +44,14 @@ class _MenuPageState extends State<MenuPage> {
   @override
   void initState() {
     setLandscape();
+    audioPlay();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    assetsAudioPlayer.dispose();
+    super.dispose();
   }
 
   @override
@@ -41,7 +63,7 @@ class _MenuPageState extends State<MenuPage> {
         width: size.width,
         height: size.height,
         child: Stack(
-          children: [
+          children: [   
             buildBackground(),
             buildImage(),
             buildIconExit(),
@@ -80,7 +102,7 @@ class _MenuPageState extends State<MenuPage> {
 
   Widget buildIconExit() {
     return Positioned(
-        top: 30,
+        top: 16,
         right: 16,
         child: GestureDetector(
             onTap: () => SystemNavigator.pop(), child: SvgPicture.asset(EXIT)));
@@ -104,10 +126,13 @@ class _MenuPageState extends State<MenuPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     GestureDetector(
-                        onTap: () => Navigator.push(
+                        onTap: () {
+                          audioStop();
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MateriPage())),
+                                builder: (context) => MateriPage()));
+                        },
                         child: SvgPicture.asset(
                           MENU_OPTION,
                           width: 80,
@@ -116,10 +141,13 @@ class _MenuPageState extends State<MenuPage> {
                       width: 40,
                     ),
                     GestureDetector(
-                        onTap: () => Navigator.push(
+                        onTap: () {
+                          audioStop();
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => KuisPage())),
+                                builder: (context) => KuisPage()));
+                        },
                         child: SvgPicture.asset(
                           PLAY,
                           width: 80,

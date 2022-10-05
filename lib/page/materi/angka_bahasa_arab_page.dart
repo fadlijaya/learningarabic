@@ -131,10 +131,10 @@ class _AngkaBahasaArabPageState extends State<AngkaBahasaArabPage> {
 
   Widget buildIconBack() {
     return Positioned(
-        top: 30,
+        top: 16,
         left: 16,
         child: GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () => Navigator.pushNamed(context, '/materi'),
             child: SvgPicture.asset(BACK)));
   }
 
@@ -142,7 +142,7 @@ class _AngkaBahasaArabPageState extends State<AngkaBahasaArabPage> {
     return Positioned.fill(
       child: Container(
         alignment: Alignment.center,
-        margin: const EdgeInsets.only(top: 60),
+        margin: const EdgeInsets.only(top: 40),
         child: Column(
           children: [
             SvgPicture.asset(
