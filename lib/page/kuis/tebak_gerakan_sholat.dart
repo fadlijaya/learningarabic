@@ -40,7 +40,9 @@ class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
         quizTebakGerakanSholat.reset();
         check = [];
       } else {
-        if (userPickAnswer == correctAnswer1 || correctAnswer2 || correctAnswer3) {
+        if (userPickAnswer == correctAnswer1 ||
+            correctAnswer2 ||
+            correctAnswer3) {
           check.add(const Text("Benar"));
           Fluttertoast.showToast(
               msg: 'Benar',
@@ -60,10 +62,16 @@ class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.CENTER,
               backgroundColor: Colors.red);
-          setState(() {
-             skor = skor - 2;
-             rating = rating - 0.2;
-          });
+          if (skor == 0) {
+            setState(() {
+              skor = skor - 0;
+            });
+          } else {
+            setState(() {
+              skor = skor - 2;
+              rating = rating - 0.2;
+            });
+          }
         }
 
         quizTebakGerakanSholat.nextQuestion();
@@ -144,12 +152,22 @@ class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
-                              onTap: () => Navigator.pushNamed(context, '/menu'),
-                              child: SvgPicture.asset(BUTTON_MENU, width: 60,)),
-                            SizedBox(width: 40,),
+                                onTap: () =>
+                                    Navigator.pushNamed(context, '/menu'),
+                                child: SvgPicture.asset(
+                                  BUTTON_MENU,
+                                  width: 60,
+                                )),
+                            SizedBox(
+                              width: 40,
+                            ),
                             GestureDetector(
-                              onTap: () =>  Navigator.pushNamed(context, '/tebakGerakanSholat'),
-                              child: SvgPicture.asset(BUTTON_ULANGI, width: 60,),
+                              onTap: () => Navigator.pushNamed(
+                                  context, '/tebakGerakanSholat'),
+                              child: SvgPicture.asset(
+                                BUTTON_ULANGI,
+                                width: 60,
+                              ),
                             )
                           ],
                         ))
@@ -218,7 +236,10 @@ class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
     return Padding(
       padding: const EdgeInsets.only(top: 16, left: 16),
       child: GestureDetector(
-          onTap: () => Navigator.pushNamed(context, '/kuis'),
+          onTap: () {
+            stopTimer();
+            Navigator.pushNamed(context, '/kuis');
+          },
           child: SvgPicture.asset(BACK)),
     );
   }
@@ -239,7 +260,9 @@ class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
               padding: const EdgeInsets.only(left: 24, top: 8),
               child: Text(
                 '$maxSeconds',
-                style: TextStyle(fontSize: 24,),
+                style: TextStyle(
+                  fontSize: 24,
+                ),
               ),
             ),
           ))
@@ -293,9 +316,12 @@ class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                checkingAnswer(quizTebakGerakanSholat.getQuestion1(), quizTebakGerakanSholat.getAnswer1()),
-                checkingAnswer(quizTebakGerakanSholat.getQuestion2(), quizTebakGerakanSholat.getAnswer2()),
-                checkingAnswer(quizTebakGerakanSholat.getQuestion3(), quizTebakGerakanSholat.getAnswer3()),
+                checkingAnswer(quizTebakGerakanSholat.getQuestion1(),
+                    quizTebakGerakanSholat.getAnswer1()),
+                checkingAnswer(quizTebakGerakanSholat.getQuestion2(),
+                    quizTebakGerakanSholat.getAnswer2()),
+                checkingAnswer(quizTebakGerakanSholat.getQuestion3(),
+                    quizTebakGerakanSholat.getAnswer3()),
               ],
             ),
           ],

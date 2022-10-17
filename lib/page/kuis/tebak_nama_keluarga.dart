@@ -33,14 +33,16 @@ class _TebakNamaKeluargaPageState extends State<TebakNamaKeluargaPage> {
     bool correctAnswer3 = quizTebakNamaKeluarga.getAnswer3();
     setState(() {
       if (quizTebakNamaKeluarga.isFinished() == true) {
-        Future.delayed(const Duration(seconds: 3), () {
+        Future.delayed(const Duration(seconds: 1), () {
           endQuiz();
         });
         stopTimer();
         quizTebakNamaKeluarga.reset();
         check = [];
       } else {
-        if (userPickAnswer == correctAnswer1 || correctAnswer2 || correctAnswer3) {
+        if (userPickAnswer == correctAnswer1 ||
+            correctAnswer2 ||
+            correctAnswer3) {
           check.add(const Text("Benar"));
           Fluttertoast.showToast(
               msg: 'Benar',
@@ -60,10 +62,16 @@ class _TebakNamaKeluargaPageState extends State<TebakNamaKeluargaPage> {
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.CENTER,
               backgroundColor: Colors.red);
-          setState(() {
-             skor = skor - 2;
-             rating = rating - 0.2;
-          });
+          if (skor == 0) {
+            setState(() {
+              skor = skor - 0;
+            });
+          } else {
+            setState(() {
+              skor = skor - 2;
+              rating = rating - 0.2;
+            });
+          }
         }
 
         quizTebakNamaKeluarga.nextQuestion();
@@ -144,12 +152,22 @@ class _TebakNamaKeluargaPageState extends State<TebakNamaKeluargaPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
-                              onTap: () => Navigator.pushNamed(context, '/menu'),
-                              child: SvgPicture.asset(BUTTON_MENU, width: 60,)),
-                            SizedBox(width: 40,),
+                                onTap: () =>
+                                    Navigator.pushNamed(context, '/menu'),
+                                child: SvgPicture.asset(
+                                  BUTTON_MENU,
+                                  width: 60,
+                                )),
+                            SizedBox(
+                              width: 40,
+                            ),
                             GestureDetector(
-                              onTap: () =>  Navigator.pushNamed(context, '/tebakNamaKeluarga'),
-                              child: SvgPicture.asset(BUTTON_ULANGI, width: 60,),
+                              onTap: () => Navigator.pushNamed(
+                                  context, '/tebakNamaKeluarga'),
+                              child: SvgPicture.asset(
+                                BUTTON_ULANGI,
+                                width: 60,
+                              ),
                             )
                           ],
                         ))
@@ -218,7 +236,10 @@ class _TebakNamaKeluargaPageState extends State<TebakNamaKeluargaPage> {
     return Padding(
       padding: const EdgeInsets.only(top: 16, left: 16),
       child: GestureDetector(
-          onTap: () => Navigator.pushNamed(context, '/kuis'),
+          onTap: () {
+            stopTimer();
+            Navigator.pushNamed(context, '/kuis');
+          },
           child: SvgPicture.asset(BACK)),
     );
   }
@@ -239,7 +260,9 @@ class _TebakNamaKeluargaPageState extends State<TebakNamaKeluargaPage> {
               padding: const EdgeInsets.only(left: 24, top: 8),
               child: Text(
                 '$maxSeconds',
-                style: TextStyle(fontSize: 24,),
+                style: TextStyle(
+                  fontSize: 24,
+                ),
               ),
             ),
           ))
@@ -293,9 +316,12 @@ class _TebakNamaKeluargaPageState extends State<TebakNamaKeluargaPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                checkingAnswer(quizTebakNamaKeluarga.getQuestion1(), quizTebakNamaKeluarga.getAnswer1()),
-                checkingAnswer(quizTebakNamaKeluarga.getQuestion2(), quizTebakNamaKeluarga.getAnswer2()),
-                checkingAnswer(quizTebakNamaKeluarga.getQuestion3(), quizTebakNamaKeluarga.getAnswer3()),
+                checkingAnswer(quizTebakNamaKeluarga.getQuestion1(),
+                    quizTebakNamaKeluarga.getAnswer1()),
+                checkingAnswer(quizTebakNamaKeluarga.getQuestion2(),
+                    quizTebakNamaKeluarga.getAnswer2()),
+                checkingAnswer(quizTebakNamaKeluarga.getQuestion3(),
+                    quizTebakNamaKeluarga.getAnswer3()),
               ],
             ),
           ],
@@ -306,8 +332,6 @@ class _TebakNamaKeluargaPageState extends State<TebakNamaKeluargaPage> {
 
   Widget checkingAnswer(String correctOrWrong, bool trueOrFalse) {
     return Container(
-      width: 120,
-      height: 70,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: Colors.orange, width: 5),
@@ -316,7 +340,7 @@ class _TebakNamaKeluargaPageState extends State<TebakNamaKeluargaPage> {
           onPressed: () => checkAnswer(trueOrFalse),
           child: Text(
             correctOrWrong,
-            style: TextStyle(fontSize: 30, color: Colors.black),
+            style: TextStyle(fontSize: 24, color: Colors.black),
           )),
     );
   }

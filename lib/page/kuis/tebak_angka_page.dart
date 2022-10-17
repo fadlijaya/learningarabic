@@ -40,7 +40,9 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
         quizTebakAngka.reset();
         check = [];
       } else {
-        if (userPickAnswer == correctAnswer1 || correctAnswer2 || correctAnswer3) {
+        if (userPickAnswer == correctAnswer1 ||
+            correctAnswer2 ||
+            correctAnswer3) {
           check.add(const Text("Benar"));
           Fluttertoast.showToast(
               msg: 'Benar',
@@ -60,8 +62,16 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.CENTER,
               backgroundColor: Colors.red);
-          skor = skor - 2;
-          rating = rating - 0.2;
+          if (skor == 0) {
+            setState(() {
+              skor = skor - 0;
+            });
+          } else {
+            setState(() {
+              skor = skor - 2;
+              rating = rating - 0.2;
+            });
+          }
         }
 
         quizTebakAngka.nextQuestion();
@@ -141,12 +151,22 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
-                              onTap: () => Navigator.pushNamed(context, '/menu'),
-                              child: SvgPicture.asset(BUTTON_MENU, width: 60,)),
-                            SizedBox(width: 40,),
+                                onTap: () =>
+                                    Navigator.pushNamed(context, '/menu'),
+                                child: SvgPicture.asset(
+                                  BUTTON_MENU,
+                                  width: 60,
+                                )),
+                            SizedBox(
+                              width: 40,
+                            ),
                             GestureDetector(
-                              onTap: () =>  Navigator.pushNamed(context, '/tebakAngka'),
-                              child: SvgPicture.asset(BUTTON_ULANGI, width: 60,),
+                              onTap: () =>
+                                  Navigator.pushNamed(context, '/tebakAngka'),
+                              child: SvgPicture.asset(
+                                BUTTON_ULANGI,
+                                width: 60,
+                              ),
                             )
                           ],
                         ))
@@ -209,7 +229,10 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
     return Padding(
       padding: const EdgeInsets.only(top: 16, left: 16),
       child: GestureDetector(
-          onTap: () => Navigator.pushNamed(context, '/kuis'),
+          onTap: () {
+            stopTimer();
+            Navigator.pushNamed(context, '/kuis');
+          },
           child: SvgPicture.asset(BACK)),
     );
   }
@@ -289,9 +312,12 @@ class _TebakAngkaPageState extends State<TebakAngkaPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                checkingAnswer(quizTebakAngka.getQuestion1(), quizTebakAngka.getAnswer1()),
-                checkingAnswer(quizTebakAngka.getQuestion2(), quizTebakAngka.getAnswer2()),
-                checkingAnswer(quizTebakAngka.getQuestion3(), quizTebakAngka.getAnswer3()),
+                checkingAnswer(
+                    quizTebakAngka.getQuestion1(), quizTebakAngka.getAnswer1()),
+                checkingAnswer(
+                    quizTebakAngka.getQuestion2(), quizTebakAngka.getAnswer2()),
+                checkingAnswer(
+                    quizTebakAngka.getQuestion3(), quizTebakAngka.getAnswer3()),
               ],
             ),
           ],

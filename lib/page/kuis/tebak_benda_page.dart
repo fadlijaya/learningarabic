@@ -40,7 +40,9 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
         quizTebakBenda.reset();
         check = [];
       } else {
-        if (userPickAnswer == correctAnswer1 || correctAnswer2 || correctAnswer3) {
+        if (userPickAnswer == correctAnswer1 ||
+            correctAnswer2 ||
+            correctAnswer3) {
           check.add(const Text("Benar"));
           Fluttertoast.showToast(
               msg: 'Benar',
@@ -60,10 +62,16 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.CENTER,
               backgroundColor: Colors.red);
-          setState(() {
-             skor = skor - 2;
-             rating = rating - 0.2;
-          });
+          if (skor == 0) {
+            setState(() {
+              skor = skor - 0;
+            });
+          } else {
+            setState(() {
+              skor = skor - 2;
+              rating = rating - 0.2;
+            });
+          }
         }
 
         quizTebakBenda.nextQuestion();
@@ -144,12 +152,22 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
-                              onTap: () => Navigator.pushNamed(context, '/menu'),
-                              child: SvgPicture.asset(BUTTON_MENU, width: 60,)),
-                            SizedBox(width: 40,),
+                                onTap: () =>
+                                    Navigator.pushNamed(context, '/menu'),
+                                child: SvgPicture.asset(
+                                  BUTTON_MENU,
+                                  width: 60,
+                                )),
+                            SizedBox(
+                              width: 40,
+                            ),
                             GestureDetector(
-                              onTap: () =>  Navigator.pushNamed(context, '/tebakBenda'),
-                              child: SvgPicture.asset(BUTTON_ULANGI, width: 60,),
+                              onTap: () =>
+                                  Navigator.pushNamed(context, '/tebakBenda'),
+                              child: SvgPicture.asset(
+                                BUTTON_ULANGI,
+                                width: 60,
+                              ),
                             )
                           ],
                         ))
@@ -218,7 +236,10 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
     return Padding(
       padding: const EdgeInsets.only(top: 16, left: 16),
       child: GestureDetector(
-          onTap: () => Navigator.pushNamed(context, '/kuis'),
+          onTap: () {
+            stopTimer();
+            Navigator.pushNamed(context, '/kuis');
+          },
           child: SvgPicture.asset(BACK)),
     );
   }
@@ -239,7 +260,9 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
               padding: const EdgeInsets.only(left: 24, top: 8),
               child: Text(
                 '$maxSeconds',
-                style: TextStyle(fontSize: 24,),
+                style: TextStyle(
+                  fontSize: 24,
+                ),
               ),
             ),
           ))
@@ -293,9 +316,12 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                checkingAnswer(quizTebakBenda.getQuestion1(), quizTebakBenda.getAnswer1()),
-                checkingAnswer(quizTebakBenda.getQuestion2(), quizTebakBenda.getAnswer2()),
-                checkingAnswer(quizTebakBenda.getQuestion3(), quizTebakBenda.getAnswer3()),
+                checkingAnswer(
+                    quizTebakBenda.getQuestion1(), quizTebakBenda.getAnswer1()),
+                checkingAnswer(
+                    quizTebakBenda.getQuestion2(), quizTebakBenda.getAnswer2()),
+                checkingAnswer(
+                    quizTebakBenda.getQuestion3(), quizTebakBenda.getAnswer3()),
               ],
             ),
           ],

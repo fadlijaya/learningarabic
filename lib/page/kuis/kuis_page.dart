@@ -17,19 +17,19 @@ class KuisPage extends StatefulWidget {
 
 class _KuisPageState extends State<KuisPage> {
   AssetsAudioPlayer assetsAudioPlayer = AssetsAudioPlayer();
-   
-    audioPlay() {
-    try {
-      assetsAudioPlayer.open(Audio(BACKSOUND), loopMode: LoopMode.playlist, showNotification: false,);
-    } catch (e) {}
+
+  audioPlay() {
+    assetsAudioPlayer.open(
+      Audio(BACKSOUND),
+      loopMode: LoopMode.playlist,
+      showNotification: false,
+    );
   }
 
-   audioStop() {
-    try {
-      assetsAudioPlayer.open(Audio(BACKSOUND), autoStart: false, showNotification: false);
-    } catch (e) {}
+  audioStop() {
+    assetsAudioPlayer.stop();
   }
-  
+
   @override
   void initState() {
     super.initState();
@@ -69,7 +69,10 @@ class _KuisPageState extends State<KuisPage> {
         top: 16,
         left: 16,
         child: GestureDetector(
-            onTap: () => Navigator.pushNamed(context, '/menu'),
+            onTap: () {
+              audioStop();
+              Navigator.pushNamed(context, '/menu');
+            },
             child: SvgPicture.asset(BACK)));
   }
 
@@ -94,9 +97,9 @@ class _KuisPageState extends State<KuisPage> {
                   onTap: () {
                     audioStop();
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => TebakBendaPage()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TebakBendaPage()));
                   },
                   child: Stack(
                     children: [
@@ -114,9 +117,9 @@ class _KuisPageState extends State<KuisPage> {
                   onTap: () {
                     audioStop();
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => TebakAngkaPage()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TebakAngkaPage()));
                   },
                   child: Stack(
                     children: [
@@ -134,9 +137,9 @@ class _KuisPageState extends State<KuisPage> {
                   onTap: () {
                     audioStop();
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => TebakGerakanSholatPage()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TebakGerakanSholatPage()));
                   },
                   child: Stack(
                     children: [
@@ -154,9 +157,9 @@ class _KuisPageState extends State<KuisPage> {
                   onTap: () {
                     audioStop();
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => TebakNamaKeluargaPage()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TebakNamaKeluargaPage()));
                   },
                   child: Stack(
                     children: [

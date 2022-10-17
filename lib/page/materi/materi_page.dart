@@ -16,18 +16,18 @@ class MateriPage extends StatefulWidget {
 }
 
 class _MateriPageState extends State<MateriPage> {
-   AssetsAudioPlayer assetsAudioPlayer = AssetsAudioPlayer();
-   
-    audioPlay() {
-    try {
-      assetsAudioPlayer.open(Audio(BACKSOUND), loopMode: LoopMode.playlist, showNotification: false,);
-    } catch (e) {}
+  AssetsAudioPlayer assetsAudioPlayer = AssetsAudioPlayer();
+
+  audioPlay() {
+    assetsAudioPlayer.open(
+      Audio(BACKSOUND),
+      loopMode: LoopMode.playlist,
+      showNotification: false,
+    );
   }
 
-   audioStop() {
-    try {
-      assetsAudioPlayer.open(Audio(BACKSOUND), autoStart: false, showNotification: false);
-    } catch (e) {}
+  audioStop() {
+    assetsAudioPlayer.stop();
   }
 
   @override
@@ -80,14 +80,16 @@ class _MateriPageState extends State<MateriPage> {
     return Positioned.fill(
       child: Container(
         alignment: Alignment.center,
-        margin: const EdgeInsets.only(top: 40), 
+        margin: const EdgeInsets.only(top: 40),
         child: Column(
           children: [
             SvgPicture.asset(
               TITLE_PILIH_MATERI,
               width: 200,
             ),
-            const SizedBox(height: 60,),
+            const SizedBox(
+              height: 60,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -95,9 +97,9 @@ class _MateriPageState extends State<MateriPage> {
                   onTap: () {
                     audioStop();
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => BendaDalamKelasPage()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BendaDalamKelasPage()));
                   },
                   child: SvgPicture.asset(
                     FRAME1,
@@ -111,9 +113,9 @@ class _MateriPageState extends State<MateriPage> {
                   onTap: () {
                     audioStop();
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => AngkaBahasaArabPage()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AngkaBahasaArabPage()));
                   },
                   child: SvgPicture.asset(
                     FRAME2,
@@ -127,7 +129,7 @@ class _MateriPageState extends State<MateriPage> {
                   onTap: () {
                     audioStop();
                     Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SholatPage()));
+                        MaterialPageRoute(builder: (context) => SholatPage()));
                   },
                   child: SvgPicture.asset(
                     FRAME3,
@@ -141,9 +143,9 @@ class _MateriPageState extends State<MateriPage> {
                   onTap: () {
                     audioStop();
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NamaKeluargaPage()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => NamaKeluargaPage()));
                   },
                   child: SvgPicture.asset(
                     FRAME4,
