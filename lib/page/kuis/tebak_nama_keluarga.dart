@@ -5,19 +5,19 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../models/m_tebak_benda.dart';
+import '../../models/m_tebak_nama_keluarga.dart';
 import '../../utils/constants.dart';
 
-QuizTebakBenda quizTebakBenda = QuizTebakBenda();
+QuizTebakNamaKeluarga quizTebakNamaKeluarga = QuizTebakNamaKeluarga();
 
-class TebakBendaPage extends StatefulWidget {
-  const TebakBendaPage({Key? key}) : super(key: key);
+class TebakNamaKeluargaPage extends StatefulWidget {
+  const TebakNamaKeluargaPage({Key? key}) : super(key: key);
 
   @override
-  State<TebakBendaPage> createState() => _TebakBendaPageState();
+  State<TebakNamaKeluargaPage> createState() => _TebakNamaKeluargaPageState();
 }
 
-class _TebakBendaPageState extends State<TebakBendaPage> {
+class _TebakNamaKeluargaPageState extends State<TebakNamaKeluargaPage> {
   PageController pageController = PageController();
   Duration duration = const Duration(milliseconds: 500);
   Curve curve = Curves.ease;
@@ -28,16 +28,16 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
   double rating = 0;
 
   checkAnswer(bool userPickAnswer) {
-    bool correctAnswer1 = quizTebakBenda.getAnswer1();
-    bool correctAnswer2 = quizTebakBenda.getAnswer2();
-    bool correctAnswer3 = quizTebakBenda.getAnswer3();
+    bool correctAnswer1 = quizTebakNamaKeluarga.getAnswer1();
+    bool correctAnswer2 = quizTebakNamaKeluarga.getAnswer2();
+    bool correctAnswer3 = quizTebakNamaKeluarga.getAnswer3();
     setState(() {
-      if (quizTebakBenda.isFinished() == true) {
+      if (quizTebakNamaKeluarga.isFinished() == true) {
         Future.delayed(const Duration(seconds: 3), () {
           endQuiz();
         });
         stopTimer();
-        quizTebakBenda.reset();
+        quizTebakNamaKeluarga.reset();
         check = [];
       } else {
         if (userPickAnswer == correctAnswer1 || correctAnswer2 || correctAnswer3) {
@@ -66,7 +66,7 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
           });
         }
 
-        quizTebakBenda.nextQuestion();
+        quizTebakNamaKeluarga.nextQuestion();
       }
     });
   }
@@ -148,7 +148,7 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
                               child: SvgPicture.asset(BUTTON_MENU, width: 60,)),
                             SizedBox(width: 40,),
                             GestureDetector(
-                              onTap: () =>  Navigator.pushNamed(context, '/tebakBenda'),
+                              onTap: () =>  Navigator.pushNamed(context, '/tebakNamaKeluarga'),
                               child: SvgPicture.asset(BUTTON_ULANGI, width: 60,),
                             )
                           ],
@@ -286,16 +286,16 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
             Padding(
               padding: const EdgeInsets.only(bottom: 40),
               child: SvgPicture.asset(
-                quizTebakBenda.getImage(),
+                quizTebakNamaKeluarga.getImage(),
                 width: 140,
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                checkingAnswer(quizTebakBenda.getQuestion1(), quizTebakBenda.getAnswer1()),
-                checkingAnswer(quizTebakBenda.getQuestion2(), quizTebakBenda.getAnswer2()),
-                checkingAnswer(quizTebakBenda.getQuestion3(), quizTebakBenda.getAnswer3()),
+                checkingAnswer(quizTebakNamaKeluarga.getQuestion1(), quizTebakNamaKeluarga.getAnswer1()),
+                checkingAnswer(quizTebakNamaKeluarga.getQuestion2(), quizTebakNamaKeluarga.getAnswer2()),
+                checkingAnswer(quizTebakNamaKeluarga.getQuestion3(), quizTebakNamaKeluarga.getAnswer3()),
               ],
             ),
           ],

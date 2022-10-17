@@ -1,15 +1,12 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:learningarabic/page/materi/angka_bahasa_arab_page.dart';
-import 'package:learningarabic/page/materi/benda_dalam_kelas_page.dart';
-import 'package:learningarabic/page/materi/sholat_page.dart';
 
 import '../../utils/constants.dart';
-import '../materi/nama_keluarga_page.dart';
 import 'tebak_angka_page.dart';
 import 'tebak_benda_page.dart';
+import 'tebak_gerakan_sholat.dart';
+import 'tebak_nama_keluarga.dart';
 
 class KuisPage extends StatefulWidget {
   const KuisPage({Key? key}) : super(key: key);
@@ -105,13 +102,13 @@ class _KuisPageState extends State<KuisPage> {
                     children: [
                       SvgPicture.asset(
                         TEBAK_BENDA,
-                        width: 180,
+                        width: 160,
                       ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  width: 90,
+                  width: 24,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -125,7 +122,47 @@ class _KuisPageState extends State<KuisPage> {
                     children: [
                       SvgPicture.asset(
                         TEBAK_ANGKA,
-                        width: 180,
+                        width: 160,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 24,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    audioStop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TebakGerakanSholatPage()));
+                  },
+                  child: Stack(
+                    children: [
+                      SvgPicture.asset(
+                        TEBAK_ANGKA,
+                        width: 160,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 24,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    audioStop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TebakNamaKeluargaPage()));
+                  },
+                  child: Stack(
+                    children: [
+                      SvgPicture.asset(
+                        TEBAK_ANGKA,
+                        width: 160,
                       ),
                     ],
                   ),

@@ -1,6 +1,5 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:learningarabic/models/m_angka_bahasa_arab.dart';
 
@@ -22,16 +21,16 @@ class _AngkaBahasaArabPageState extends State<AngkaBahasaArabPage> {
   List<AngkaBahasaArab>? angkaBahasaArab;
 
   static List<String> arabicName = [
-    'واحد',
-    'اثنين',
-    'ثلاثة',
-    'أربعة',
-    'خمسة'
-    'ستة',
-    'سبعة',
-    'ثمانية',
-    'تسع',
-    'عشرة'
+    'وَاحِدٌ ',
+    'اِثْنَانِ  ',
+    'الثَّلَاثَةُ  ',
+    'اَرْبَعَةٌ  ',
+    'خَمْسَةُ  ',
+    'سِتَّةُ ',  
+    'سَبْعَةُ ',
+    'ثَمَانِيَةٌ ',
+    'تِسْعَةٌ ',
+    'عَشْرَةٌ  '
   ];
 
   static List<String> name = [
@@ -45,16 +44,6 @@ class _AngkaBahasaArabPageState extends State<AngkaBahasaArabPage> {
     'Delapan',
     'Sembilan',
     'Sepuluh'
-    /*'Wahid',
-    'Aithnayn',
-    'Thalatha',
-    'Arbaea',
-    'Khamsa',
-    'Sita',
-    'Sabea',
-    'Thamania',
-    'Tise',
-    'Eashra'*/
   ];
 
   static List<String> assetImage = [
@@ -80,7 +69,7 @@ class _AngkaBahasaArabPageState extends State<AngkaBahasaArabPage> {
     "assets/audio/2/7.mp4",
     "assets/audio/2/8.mp4",
     "assets/audio/2/9.mp4",
-    "assets/audio/2/1.mp4"
+    "assets/audio/2/10.mp4"
   ];
 
   audio(String assetAudio) {
@@ -180,6 +169,7 @@ class _AngkaBahasaArabPageState extends State<AngkaBahasaArabPage> {
                               children: [
                                 Text(
                                   arabicName,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 32,
                                       fontWeight: FontWeight.bold),

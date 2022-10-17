@@ -1,6 +1,5 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:learningarabic/models/m_sholat.dart';
 
@@ -22,15 +21,15 @@ class _SholatPageState extends State<SholatPage> {
   List<Sholat>? sholatList;
 
   static List<String> arabicName = [
-    'نيّة',
-    'تكبير',
-    'اقرأ السورة',
-    'تقوس لأسفل',
-    'النهوض من الركوع',
-    'الجلوس بين سجدتين',
-    'سجود',
-    'مع تحياتي',
-    'تحيات',
+    'نِيَّة',
+    ' تَكْبِيْر',
+    'اَقْرَأ اسُوْرَة',
+    'لرُّكُوعُ  ',
+    'وَانْتَهَضَ  مِنْ الرُّكُوعُ',
+    'جُلُوْسًا بَيْنَ اِثْنَانِ سُجُودٌ',
+    'سُجُودٌ  ',
+    'السَّلَامُ ',
+    'تَحِيَّة ',
   ];
 
   static List<String> name = [

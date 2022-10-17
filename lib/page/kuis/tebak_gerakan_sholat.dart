@@ -4,20 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:learningarabic/models/m_tebak_gerakan_sholat.dart';
 
-import '../../models/m_tebak_benda.dart';
 import '../../utils/constants.dart';
 
-QuizTebakBenda quizTebakBenda = QuizTebakBenda();
+QuizTebakGerakanSholat quizTebakGerakanSholat = QuizTebakGerakanSholat();
 
-class TebakBendaPage extends StatefulWidget {
-  const TebakBendaPage({Key? key}) : super(key: key);
+class TebakGerakanSholatPage extends StatefulWidget {
+  const TebakGerakanSholatPage({Key? key}) : super(key: key);
 
   @override
-  State<TebakBendaPage> createState() => _TebakBendaPageState();
+  State<TebakGerakanSholatPage> createState() => _TebakGerakanSholatPageState();
 }
 
-class _TebakBendaPageState extends State<TebakBendaPage> {
+class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
   PageController pageController = PageController();
   Duration duration = const Duration(milliseconds: 500);
   Curve curve = Curves.ease;
@@ -28,16 +28,16 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
   double rating = 0;
 
   checkAnswer(bool userPickAnswer) {
-    bool correctAnswer1 = quizTebakBenda.getAnswer1();
-    bool correctAnswer2 = quizTebakBenda.getAnswer2();
-    bool correctAnswer3 = quizTebakBenda.getAnswer3();
+    bool correctAnswer1 = quizTebakGerakanSholat.getAnswer1();
+    bool correctAnswer2 = quizTebakGerakanSholat.getAnswer2();
+    bool correctAnswer3 = quizTebakGerakanSholat.getAnswer3();
     setState(() {
-      if (quizTebakBenda.isFinished() == true) {
+      if (quizTebakGerakanSholat.isFinished() == true) {
         Future.delayed(const Duration(seconds: 3), () {
           endQuiz();
         });
         stopTimer();
-        quizTebakBenda.reset();
+        quizTebakGerakanSholat.reset();
         check = [];
       } else {
         if (userPickAnswer == correctAnswer1 || correctAnswer2 || correctAnswer3) {
@@ -66,7 +66,7 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
           });
         }
 
-        quizTebakBenda.nextQuestion();
+        quizTebakGerakanSholat.nextQuestion();
       }
     });
   }
@@ -148,7 +148,7 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
                               child: SvgPicture.asset(BUTTON_MENU, width: 60,)),
                             SizedBox(width: 40,),
                             GestureDetector(
-                              onTap: () =>  Navigator.pushNamed(context, '/tebakBenda'),
+                              onTap: () =>  Navigator.pushNamed(context, '/tebakGerakanSholat'),
                               child: SvgPicture.asset(BUTTON_ULANGI, width: 60,),
                             )
                           ],
@@ -286,16 +286,16 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
             Padding(
               padding: const EdgeInsets.only(bottom: 40),
               child: SvgPicture.asset(
-                quizTebakBenda.getImage(),
+                quizTebakGerakanSholat.getImage(),
                 width: 140,
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                checkingAnswer(quizTebakBenda.getQuestion1(), quizTebakBenda.getAnswer1()),
-                checkingAnswer(quizTebakBenda.getQuestion2(), quizTebakBenda.getAnswer2()),
-                checkingAnswer(quizTebakBenda.getQuestion3(), quizTebakBenda.getAnswer3()),
+                checkingAnswer(quizTebakGerakanSholat.getQuestion1(), quizTebakGerakanSholat.getAnswer1()),
+                checkingAnswer(quizTebakGerakanSholat.getQuestion2(), quizTebakGerakanSholat.getAnswer2()),
+                checkingAnswer(quizTebakGerakanSholat.getQuestion3(), quizTebakGerakanSholat.getAnswer3()),
               ],
             ),
           ],
@@ -306,8 +306,6 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
 
   Widget checkingAnswer(String correctOrWrong, bool trueOrFalse) {
     return Container(
-      width: 120,
-      height: 70,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: Colors.orange, width: 5),
@@ -316,7 +314,7 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
           onPressed: () => checkAnswer(trueOrFalse),
           child: Text(
             correctOrWrong,
-            style: TextStyle(fontSize: 30, color: Colors.black),
+            style: TextStyle(fontSize: 24, color: Colors.black),
           )),
     );
   }

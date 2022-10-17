@@ -1,6 +1,5 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:learningarabic/models/m_nama_keluarga.dart';
 
@@ -22,14 +21,14 @@ class _NamaKeluargaPageState extends State<NamaKeluargaPage> {
   List<NamaKeluarga>? namaKeluargaList;
 
   static List<String> arabicName = [
-    'الجد',
-    'جدة',
-    'الآب',
-    'أم',
-    'اخو الام'
-    'عمة',
-    'طفل',
-    'حفيد',
+    'الجَدُّ ',
+    'جَدَّةٌ ',
+    'الوَالِدُ ',
+    'أُمِّ ',
+    'أَخْوِلَةٌ  ',
+    'عَمَّةٌ  ',
+    'الطِّفْلُ  ',
+    'الحَفِيْدُ ',
   ];
 
   static List<String> name = [
@@ -38,17 +37,9 @@ class _NamaKeluargaPageState extends State<NamaKeluargaPage> {
     'Ayah',
     'Ibu',
     'Paman',
-    'Tante',
+    'Bibi',
     'Anak',
     'Cucu',
-    /*'Aljadu',
-    'Jida',
-    'Alab',
-    'Um',
-    'Akhw alam',
-    'Eama',
-    'Tifl',
-    'Hafid',*/
   ];
 
   static List<String> assetImage = [

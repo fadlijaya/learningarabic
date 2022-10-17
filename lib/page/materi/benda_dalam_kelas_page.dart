@@ -1,6 +1,5 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:learningarabic/models/m_benda_dalam_kelas.dart';
 
@@ -22,16 +21,16 @@ class _BendaDalamKelasPageState extends State<BendaDalamKelasPage> {
   List<BendaDalamKelas>? bendaDalamKelas;
 
   static List<String> arabicName = [
-    'مسطرة',
-    'ممحاة',
-    'حقيبة',
-    'كرسي',
-    'الطاولة',
-    'باب',
-    'قلم',
-    'قلم حبر',
-    'السبورة',
-    'مكنسة'
+   'مِسْطَرَةٌ  ',
+    'مِمْسَحَةٌ  ',
+    'حَقِيْبَةٌ  ',
+    'كُرْسِيٌّ  ',
+    'الطَّاوِلَةُ  ',
+    ' بَابٌ ',
+    ' قَلَمُ ',
+    'قَلَمُ حِبْرٍ  ',
+    'سَبُوْرَةٌ  ',
+    'مِكْنَسَةٌ  '
   ];
 
   static List<String> name = [
@@ -45,16 +44,6 @@ class _BendaDalamKelasPageState extends State<BendaDalamKelasPage> {
     'Pulpen',
     'Papan Tulis',
     'Sapu'
-    /*'Mustira',
-    'Mumha',
-    'Haqiba',
-    'Kursiun',
-    'Altaawila',
-    'Bab',
-    'Qalam',
-    'Qalam Habr',
-    'Alsabuwra',
-    'Maknasa'*/
   ];
 
   static List<String> assetImage = [
@@ -191,6 +180,7 @@ class _BendaDalamKelasPageState extends State<BendaDalamKelasPage> {
                               children: [
                                 Text(
                                   arabicName,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 32,
                                       fontWeight: FontWeight.bold),
