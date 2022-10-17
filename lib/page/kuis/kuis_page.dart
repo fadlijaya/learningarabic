@@ -5,8 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../utils/constants.dart';
 import 'tebak_angka_page.dart';
 import 'tebak_benda_page.dart';
-import 'tebak_gerakan_sholat.dart';
-import 'tebak_nama_keluarga.dart';
+import 'tebak_gerakan_sholat_page.dart';
+import 'tebak_nama_keluarga_page.dart';
 
 class KuisPage extends StatefulWidget {
   const KuisPage({Key? key}) : super(key: key);

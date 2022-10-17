@@ -33,7 +33,7 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
     bool correctAnswer3 = quizTebakBenda.getAnswer3();
     setState(() {
       if (quizTebakBenda.isFinished() == true) {
-        Future.delayed(const Duration(seconds: 3), () {
+        Future.delayed(const Duration(seconds: 1), () {
           endQuiz();
         });
         stopTimer();
@@ -332,8 +332,6 @@ class _TebakBendaPageState extends State<TebakBendaPage> {
 
   Widget checkingAnswer(String correctOrWrong, bool trueOrFalse) {
     return Container(
-      width: 120,
-      height: 70,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: Colors.orange, width: 5),

@@ -11,27 +11,30 @@ class QuizTebakBenda {
   int indexNumber = 0;
 
   final List<TebakBenda> quiz1a = [
-    TebakBenda(PENGGARIS, 'مسطرة', true),
-    TebakBenda(PENGHAPUS, 'مسطرة', false),
-    TebakBenda(MEJA, 'كرسي', false),
-    TebakBenda(KURSI, 'كرسي', true),
-    TebakBenda(PINTU, 'مسطرة', false),
+    TebakBenda(PENGGARIS, 'مِسْطَرَةٌ  ', true),
+    TebakBenda(PENGHAPUS, 'مِسْطَرَةٌ  ', false),
+    TebakBenda(MEJA, 'كُرْسِيٌّ  ', false),
+    TebakBenda(TAS, 'حَقِيْبَةٌ  ', true),
+    TebakBenda(PINTU, 'مِسْطَرَةٌ  ', false),
+    TebakBenda(SAPU, 'قَلَمُ ', false),
   ];
 
   final List<TebakBenda> quiz1b = [
-    TebakBenda(PENGGARIS, 'ممحاة', false),
-    TebakBenda(PENGHAPUS, 'ممحاة', true),
-    TebakBenda(MEJA, 'مسطرة', false),
-    TebakBenda(KURSI, 'مسطرة', false),
-    TebakBenda(PINTU, 'باب', true),
+    TebakBenda(PENGGARIS, 'مِمْسَحَةٌ  ', false),
+    TebakBenda(PENGHAPUS, 'مِمْسَحَةٌ  ', true),
+    TebakBenda(MEJA, 'مِسْطَرَةٌ ', false),
+    TebakBenda(TAS, 'مِسْطَرَةٌ  ', false),
+    TebakBenda(PINTU, 'بَابٌ  ', true),
+    TebakBenda(SAPU, 'مِكْنَسَةٌ ', true),
   ];
 
   final List<TebakBenda> quiz1c = [
-    TebakBenda(PENGGARIS, 'الطاولة', false),
-    TebakBenda(PENGHAPUS, 'كرسي', false),
-    TebakBenda(MEJA, 'الطاولة', true),
-    TebakBenda(KURSI, 'مسطرة', false),
-    TebakBenda(PINTU, 'السبورة', false),
+    TebakBenda(PENGGARIS, 'الطَّاوِلَةُ  ', false),
+    TebakBenda(PENGHAPUS, 'قَلَمُ  ', false),
+    TebakBenda(MEJA, 'الطَّاوِلَةُ ', true),
+    TebakBenda(TAS, 'بَابٌ  ', false),
+    TebakBenda(PINTU, 'سَبُوْرَةٌ  ', false),
+    TebakBenda(SAPU, 'قَلَمُ حِبْرٍ ', false),
   ];
 
   nextQuestion() {

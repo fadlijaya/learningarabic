@@ -4,20 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:learningarabic/models/m_tebak_gerakan_sholat.dart';
 
+import '../../models/m_tebak_nama_keluarga.dart';
 import '../../utils/constants.dart';
 
-QuizTebakGerakanSholat quizTebakGerakanSholat = QuizTebakGerakanSholat();
+QuizTebakNamaKeluarga quizTebakNamaKeluarga = QuizTebakNamaKeluarga();
 
-class TebakGerakanSholatPage extends StatefulWidget {
-  const TebakGerakanSholatPage({Key? key}) : super(key: key);
+class TebakNamaKeluargaPage extends StatefulWidget {
+  const TebakNamaKeluargaPage({Key? key}) : super(key: key);
 
   @override
-  State<TebakGerakanSholatPage> createState() => _TebakGerakanSholatPageState();
+  State<TebakNamaKeluargaPage> createState() => _TebakNamaKeluargaPageState();
 }
 
-class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
+class _TebakNamaKeluargaPageState extends State<TebakNamaKeluargaPage> {
   PageController pageController = PageController();
   Duration duration = const Duration(milliseconds: 500);
   Curve curve = Curves.ease;
@@ -28,16 +28,16 @@ class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
   double rating = 0;
 
   checkAnswer(bool userPickAnswer) {
-    bool correctAnswer1 = quizTebakGerakanSholat.getAnswer1();
-    bool correctAnswer2 = quizTebakGerakanSholat.getAnswer2();
-    bool correctAnswer3 = quizTebakGerakanSholat.getAnswer3();
+    bool correctAnswer1 = quizTebakNamaKeluarga.getAnswer1();
+    bool correctAnswer2 = quizTebakNamaKeluarga.getAnswer2();
+    bool correctAnswer3 = quizTebakNamaKeluarga.getAnswer3();
     setState(() {
-      if (quizTebakGerakanSholat.isFinished() == true) {
-        Future.delayed(const Duration(seconds: 3), () {
+      if (quizTebakNamaKeluarga.isFinished() == true) {
+        Future.delayed(const Duration(seconds: 1), () {
           endQuiz();
         });
         stopTimer();
-        quizTebakGerakanSholat.reset();
+        quizTebakNamaKeluarga.reset();
         check = [];
       } else {
         if (userPickAnswer == correctAnswer1 ||
@@ -74,7 +74,7 @@ class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
           }
         }
 
-        quizTebakGerakanSholat.nextQuestion();
+        quizTebakNamaKeluarga.nextQuestion();
       }
     });
   }
@@ -163,7 +163,7 @@ class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
                             ),
                             GestureDetector(
                               onTap: () => Navigator.pushNamed(
-                                  context, '/tebakGerakanSholat'),
+                                  context, '/tebakNamaKeluarga'),
                               child: SvgPicture.asset(
                                 BUTTON_ULANGI,
                                 width: 60,
@@ -309,19 +309,19 @@ class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
             Padding(
               padding: const EdgeInsets.only(bottom: 40),
               child: SvgPicture.asset(
-                quizTebakGerakanSholat.getImage(),
+                quizTebakNamaKeluarga.getImage(),
                 width: 140,
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                checkingAnswer(quizTebakGerakanSholat.getQuestion1(),
-                    quizTebakGerakanSholat.getAnswer1()),
-                checkingAnswer(quizTebakGerakanSholat.getQuestion2(),
-                    quizTebakGerakanSholat.getAnswer2()),
-                checkingAnswer(quizTebakGerakanSholat.getQuestion3(),
-                    quizTebakGerakanSholat.getAnswer3()),
+                checkingAnswer(quizTebakNamaKeluarga.getQuestion1(),
+                    quizTebakNamaKeluarga.getAnswer1()),
+                checkingAnswer(quizTebakNamaKeluarga.getQuestion2(),
+                    quizTebakNamaKeluarga.getAnswer2()),
+                checkingAnswer(quizTebakNamaKeluarga.getQuestion3(),
+                    quizTebakNamaKeluarga.getAnswer3()),
               ],
             ),
           ],
@@ -340,7 +340,7 @@ class _TebakGerakanSholatPageState extends State<TebakGerakanSholatPage> {
           onPressed: () => checkAnswer(trueOrFalse),
           child: Text(
             correctOrWrong,
-            style: TextStyle(fontSize: 24, color: Colors.black),
+            style: TextStyle(fontSize: 30, color: Colors.black),
           )),
     );
   }

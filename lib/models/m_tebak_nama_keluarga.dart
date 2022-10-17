@@ -16,6 +16,7 @@ class QuizTebakNamaKeluarga {
     TebakNamaKeluarga(IBU, 'أَخْوِلَةٌ ', false),
     TebakNamaKeluarga(AYAH, 'الوَالِدُ ', true),
     TebakNamaKeluarga(KAKEK, 'جَدَّةٌ ', false),
+    TebakNamaKeluarga(PAMAN, 'جَدَّةٌ ', false),
   ];
 
   final List<TebakNamaKeluarga> quiz4b = [
@@ -24,6 +25,7 @@ class QuizTebakNamaKeluarga {
     TebakNamaKeluarga(IBU, 'الوَالِدُ  ', false),
     TebakNamaKeluarga(AYAH, 'الجَدُّ ', false),
     TebakNamaKeluarga(KAKEK, 'الجَدُّ  ', true),
+    TebakNamaKeluarga(PAMAN, 'الوَالِدُ  ', false),
   ];
 
   final List<TebakNamaKeluarga> quiz4c = [
@@ -32,6 +34,7 @@ class QuizTebakNamaKeluarga {
     TebakNamaKeluarga(IBU, 'أُمِّ  ', true),
     TebakNamaKeluarga(AYAH, 'الجَدُّ ', false),
     TebakNamaKeluarga(KAKEK, 'الوَالِدُ  ', false),
+    TebakNamaKeluarga(PAMAN, 'أَخْوِلَةٌ ', true),
   ];
 
   nextQuestion() {

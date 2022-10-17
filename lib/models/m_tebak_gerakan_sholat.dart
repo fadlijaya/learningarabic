@@ -16,6 +16,7 @@ class QuizTebakGerakanSholat {
     TebakGerakanSholat(BACA_SURAH, 'لرُّكُوعُ ', false),
     TebakGerakanSholat(NIAT, 'نِيَّة ', true),
     TebakGerakanSholat(BANGKIT_DARI_RUKUK, 'جُلُوْسًا بَيْنَ اِثْنَانِ سُجُودٌ  ', false),
+    TebakGerakanSholat(SUJUD, 'جُلُوْسًا بَيْنَ اِثْنَانِ سُجُودٌ  ', false),
   ];
 
   final List<TebakGerakanSholat> quiz3b = [
@@ -24,6 +25,7 @@ class QuizTebakGerakanSholat {
     TebakGerakanSholat(BACA_SURAH, 'تَحِيَّة  ', false),
     TebakGerakanSholat(NIAT, 'سُجُودٌ  ', false),
     TebakGerakanSholat(BANGKIT_DARI_RUKUK, 'وَانْتَهَضَ  مِنْ الرُّكُوعُ ', true),
+    TebakGerakanSholat(SUJUD, 'السَّلَامُ ', false),
   ];
 
   final List<TebakGerakanSholat> quiz3c = [
@@ -32,6 +34,7 @@ class QuizTebakGerakanSholat {
     TebakGerakanSholat(BACA_SURAH, 'اَقْرَأ اسُوْرَة  ', true),
     TebakGerakanSholat(NIAT, 'السَّلَامُ  ', false),
     TebakGerakanSholat(BANGKIT_DARI_RUKUK, 'تَكْبِيْر ', false),
+    TebakGerakanSholat(SUJUD, 'سُجُودٌ ', true),
   ];
 
   nextQuestion() {

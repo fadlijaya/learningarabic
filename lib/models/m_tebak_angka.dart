@@ -11,27 +11,30 @@ class QuizTebakAngka {
   int indexNumber = 0;
 
   final List<TebakAngka> quiz2a = [
-    TebakAngka(SEMBILAN, 'تسع', true),
-    TebakAngka(TUJUH, 'ستة', false),
-    TebakAngka(LIMA, 'أربعة', false),
-    TebakAngka(TIGA, 'ثلاثة', true),
-    TebakAngka(SATU, 'تسع', false),
+    TebakAngka(SEMBILAN, 'تِسْعَةٌ  ', true),
+    TebakAngka(TUJUH, 'اِثْنَانِ  ', false),
+    TebakAngka(LIMA, 'عَشْرَةٌ  ', false),
+    TebakAngka(TIGA, 'الثَّلَاثَةُ ', true),
+    TebakAngka(SATU, 'اَرْبَعَةٌ ', false),
+    TebakAngka(SEPULUH, 'الثَّلَاثَةُ  ', false),
   ];
 
   final List<TebakAngka> quiz2b = [
-    TebakAngka(SEMBILAN, 'ثمانية', false),
-    TebakAngka(TUJUH, 'سبعة', true),
-    TebakAngka(LIMA, 'واحد', false),
-    TebakAngka(TIGA, 'تسع', false),
-    TebakAngka(SATU, 'واحد', true),
+    TebakAngka(SEMBILAN, 'سَبْعَةُ  ', false),
+    TebakAngka(TUJUH, 'سَبْعَةُ ', true),
+    TebakAngka(LIMA, 'وَاحِدٌ  ', false),
+    TebakAngka(TIGA, 'ثَمَانِيَةٌ  ', false),
+    TebakAngka(SATU, 'وَاحِدٌ  ', true),
+    TebakAngka(SEPULUH, 'عَشْرَةٌ ', true),
   ];
 
   final List<TebakAngka> quiz2c = [
-    TebakAngka(SEMBILAN, 'ستة', false),
-    TebakAngka(TUJUH, 'أربعة', false),
-    TebakAngka(LIMA, 'خمسة', true),
-    TebakAngka(TIGA, 'واحد', false),
-    TebakAngka(SATU, 'خمسة', false),
+    TebakAngka(SEMBILAN, 'خَمْسَةُ  ', false),
+    TebakAngka(TUJUH, 'الثَّلَاثَةُ  ', false),
+    TebakAngka(LIMA, 'خَمْسَةُ  ', true),
+    TebakAngka(TIGA, 'وَاحِدٌ  ', false),
+    TebakAngka(SATU, 'خَمْسَةُ  ', false),
+    TebakAngka(SEPULUH, 'اِثْنَانِ  ', false),
   ];
 
   nextQuestion() {
