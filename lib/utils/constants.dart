@@ -13,6 +13,8 @@ const String FRAME3 = "assets/03-sholat.svg";
 const String FRAME4 = "assets/04-nama-keluarga.svg";
 const String TEBAK_ANGKA = "assets/tebak-angka.svg";
 const String TEBAK_BENDA = "assets/tebak-benda.svg";
+const String TEBAK_GERAKAN_SHOLAT = "assets/tebak-gerakan-sholat.svg";
+const String TEBAK_NAMA_KELUARGA = "assets/tebak-nama-keluarga.svg";
 
 const String BACKSOUND = "assets/audio/backsound.mp3";
 

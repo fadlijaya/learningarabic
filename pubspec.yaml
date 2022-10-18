@@ -64,6 +64,8 @@ flutter:
     - assets/title-pilih-kuis.svg
     - assets/tebak-angka.svg
     - assets/tebak-benda.svg
+    - assets/tebak-gerakan-sholat.svg
+    - assets/tebak-nama-keluarga.svg
     - assets/01-benda-dalam-kelas.svg
     - assets/02-angka.svg
     - assets/03-sholat.svg

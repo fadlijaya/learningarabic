@@ -144,7 +144,7 @@ class _KuisPageState extends State<KuisPage> {
                   child: Stack(
                     children: [
                       SvgPicture.asset(
-                        TEBAK_ANGKA,
+                        TEBAK_GERAKAN_SHOLAT,
                         width: 160,
                       ),
                     ],
@@ -164,7 +164,7 @@ class _KuisPageState extends State<KuisPage> {
                   child: Stack(
                     children: [
                       SvgPicture.asset(
-                        TEBAK_ANGKA,
+                        TEBAK_NAMA_KELUARGA,
                         width: 160,
                       ),
                     ],
