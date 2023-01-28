@@ -16,7 +16,7 @@ class QuizTebakNamaKeluarga {
     TebakNamaKeluarga(IBU, 'أَخْوِلَةٌ ', false),
     TebakNamaKeluarga(AYAH, 'الوَالِدُ ', true),
     TebakNamaKeluarga(KAKEK, 'جَدَّةٌ ', false),
-    TebakNamaKeluarga(PAMAN, 'جَدَّةٌ ', false),
+    //TebakNamaKeluarga(PAMAN, 'جَدَّةٌ ', false),
   ];
 
   final List<TebakNamaKeluarga> quiz4b = [
@@ -25,7 +25,7 @@ class QuizTebakNamaKeluarga {
     TebakNamaKeluarga(IBU, 'الوَالِدُ  ', false),
     TebakNamaKeluarga(AYAH, 'الجَدُّ ', false),
     TebakNamaKeluarga(KAKEK, 'الجَدُّ  ', true),
-    TebakNamaKeluarga(PAMAN, 'الوَالِدُ  ', false),
+    //TebakNamaKeluarga(PAMAN, 'الوَالِدُ  ', false),
   ];
 
   final List<TebakNamaKeluarga> quiz4c = [
@@ -34,11 +34,11 @@ class QuizTebakNamaKeluarga {
     TebakNamaKeluarga(IBU, 'أُمِّ  ', true),
     TebakNamaKeluarga(AYAH, 'الجَدُّ ', false),
     TebakNamaKeluarga(KAKEK, 'الوَالِدُ  ', false),
-    TebakNamaKeluarga(PAMAN, 'أَخْوِلَةٌ ', true),
+    //TebakNamaKeluarga(PAMAN, 'أَخْوِلَةٌ ', true),
   ];
 
   nextQuestion() {
-    if (indexNumber <= quiz4a.length) {
+    if (indexNumber < quiz4a.length) {
       indexNumber++;
     }
   }
@@ -72,7 +72,7 @@ class QuizTebakNamaKeluarga {
   }
 
   bool isFinished() {
-    if (indexNumber >= quiz4a.length - 1) {
+    if (indexNumber == quiz4a.length - 1) {
       return true;
     } else {
       return false;

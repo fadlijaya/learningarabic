@@ -49,7 +49,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.learningarabic"
+        applicationId "com.fourcorecreative.belajarbahasaarab"
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()

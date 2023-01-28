@@ -16,7 +16,7 @@ class QuizTebakBenda {
     TebakBenda(MEJA, 'كُرْسِيٌّ  ', false),
     TebakBenda(TAS, 'حَقِيْبَةٌ  ', true),
     TebakBenda(PINTU, 'مِسْطَرَةٌ  ', false),
-    TebakBenda(SAPU, 'قَلَمُ ', false),
+    //TebakBenda(SAPU, 'قَلَمُ ', false),
   ];
 
   final List<TebakBenda> quiz1b = [
@@ -25,7 +25,7 @@ class QuizTebakBenda {
     TebakBenda(MEJA, 'مِسْطَرَةٌ ', false),
     TebakBenda(TAS, 'مِسْطَرَةٌ  ', false),
     TebakBenda(PINTU, 'بَابٌ  ', true),
-    TebakBenda(SAPU, 'مِكْنَسَةٌ ', true),
+    //TebakBenda(SAPU, 'مِكْنَسَةٌ ', true),
   ];
 
   final List<TebakBenda> quiz1c = [
@@ -34,11 +34,11 @@ class QuizTebakBenda {
     TebakBenda(MEJA, 'الطَّاوِلَةُ ', true),
     TebakBenda(TAS, 'بَابٌ  ', false),
     TebakBenda(PINTU, 'سَبُوْرَةٌ  ', false),
-    TebakBenda(SAPU, 'قَلَمُ حِبْرٍ ', false),
+    //TebakBenda(SAPU, 'قَلَمُ حِبْرٍ ', false),
   ];
 
   nextQuestion() {
-    if (indexNumber <= quiz1a.length) {
+    if (indexNumber < quiz1a.length) {
       indexNumber++;
     }
   }
@@ -72,7 +72,7 @@ class QuizTebakBenda {
   }
 
   bool isFinished() {
-    if (indexNumber >= quiz1a.length - 1) {
+    if (indexNumber == quiz1a.length - 1) {
       return true;
     } else {
       return false;

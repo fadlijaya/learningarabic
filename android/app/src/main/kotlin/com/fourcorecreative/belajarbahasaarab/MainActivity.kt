@@ -1,4 +1,4 @@
-package com.example.learningarabic
+package com.fourcorecreative.belajarbahasaarab
 
 import io.flutter.embedding.android.FlutterActivity
 

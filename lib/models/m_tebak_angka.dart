@@ -16,7 +16,7 @@ class QuizTebakAngka {
     TebakAngka(LIMA, 'عَشْرَةٌ  ', false),
     TebakAngka(TIGA, 'الثَّلَاثَةُ ', true),
     TebakAngka(SATU, 'اَرْبَعَةٌ ', false),
-    TebakAngka(SEPULUH, 'الثَّلَاثَةُ  ', false),
+    //TebakAngka(SEPULUH, 'الثَّلَاثَةُ  ', false),
   ];
 
   final List<TebakAngka> quiz2b = [
@@ -25,7 +25,7 @@ class QuizTebakAngka {
     TebakAngka(LIMA, 'وَاحِدٌ  ', false),
     TebakAngka(TIGA, 'ثَمَانِيَةٌ  ', false),
     TebakAngka(SATU, 'وَاحِدٌ  ', true),
-    TebakAngka(SEPULUH, 'عَشْرَةٌ ', true),
+    //TebakAngka(SEPULUH, 'عَشْرَةٌ ', true),
   ];
 
   final List<TebakAngka> quiz2c = [
@@ -34,11 +34,11 @@ class QuizTebakAngka {
     TebakAngka(LIMA, 'خَمْسَةُ  ', true),
     TebakAngka(TIGA, 'وَاحِدٌ  ', false),
     TebakAngka(SATU, 'خَمْسَةُ  ', false),
-    TebakAngka(SEPULUH, 'اِثْنَانِ  ', false),
+    //TebakAngka(SEPULUH, 'اِثْنَانِ  ', false),
   ];
 
   nextQuestion() {
-    if (indexNumber <= quiz2a.length) {
+    if (indexNumber < quiz2a.length) {
       indexNumber++;
     }
   }
@@ -72,7 +72,7 @@ class QuizTebakAngka {
   }
 
   bool isFinished() {
-    if (indexNumber >= quiz2a.length - 1) {
+    if (indexNumber == quiz2a.length - 1) {
       return true;
     } else {
       return false;

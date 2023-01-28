@@ -28,53 +28,53 @@ class _TebakNamaKeluargaPageState extends State<TebakNamaKeluargaPage> {
   double rating = 0;
 
   checkAnswer(bool userPickAnswer) {
-    bool correctAnswer1 = quizTebakNamaKeluarga.getAnswer1();
-    bool correctAnswer2 = quizTebakNamaKeluarga.getAnswer2();
-    bool correctAnswer3 = quizTebakNamaKeluarga.getAnswer3();
+    //bool correctAnswer1 = quizTebakNamaKeluarga.getAnswer1();
+    //bool correctAnswer2 = quizTebakNamaKeluarga.getAnswer2();
+    //bool correctAnswer3 = quizTebakNamaKeluarga.getAnswer3();
     setState(() {
+      if (userPickAnswer == true) {
+        check.add(const Text("Benar"));
+        Fluttertoast.showToast(
+            msg: 'Benar',
+            fontSize: 24.0,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            backgroundColor: Colors.green);
+        setState(() {
+          skor = skor + 10;
+          rating = rating + 1;
+        });
+      } else {
+        check.add(const Text("Salah"));
+        Fluttertoast.showToast(
+            msg: 'Salah',
+            fontSize: 24.0,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            backgroundColor: Colors.red);
+        if (skor == 0) {
+          setState(() {
+            skor = skor - 0;
+          });
+        } else {
+          setState(() {
+            skor = skor - 2;
+            rating = rating - 0.2;
+          });
+        }
+      }
+
       if (quizTebakNamaKeluarga.isFinished() == true) {
         Future.delayed(const Duration(seconds: 1), () {
           endQuiz();
+          stopTimer();
+          quizTebakNamaKeluarga.reset();
         });
-        stopTimer();
-        quizTebakNamaKeluarga.reset();
-        check = [];
+        //check = [];
       } else {
-        if (userPickAnswer == correctAnswer1 ||
-            correctAnswer2 ||
-            correctAnswer3) {
-          check.add(const Text("Benar"));
-          Fluttertoast.showToast(
-              msg: 'Benar',
-              fontSize: 24.0,
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-              backgroundColor: Colors.green);
-          setState(() {
-            skor = skor + 10;
-            rating = rating + 1;
-          });
-        } else {
-          check.add(const Text("Salah"));
-          Fluttertoast.showToast(
-              msg: 'Salah',
-              fontSize: 24.0,
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-              backgroundColor: Colors.red);
-          if (skor == 0) {
-            setState(() {
-              skor = skor - 0;
-            });
-          } else {
-            setState(() {
-              skor = skor - 2;
-              rating = rating - 0.2;
-            });
-          }
-        }
-
-        quizTebakNamaKeluarga.nextQuestion();
+        Future.delayed(const Duration(seconds: 1), () {
+          quizTebakNamaKeluarga.nextQuestion();
+        });
       }
     });
   }
